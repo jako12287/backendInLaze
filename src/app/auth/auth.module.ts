@@ -4,6 +4,7 @@ import { PassportModule } from "@nestjs/passport";
 import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
 import { UsersModule } from "../users/users.module";
+import { RevokedTokensModule } from "./revoked-tokens.module"; 
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { UsersModule } from "../users/users.module";
       secret: "jako12287", 
       signOptions: { expiresIn: "1h" }, 
     }),
+    RevokedTokensModule,  
   ],
   providers: [AuthService],
   controllers: [AuthController],
