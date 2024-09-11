@@ -6,17 +6,12 @@ import { AuthModule } from "./auth/auth.module";
 import { MongooseModule } from "@nestjs/mongoose";
 import { JwtModule } from "@nestjs/jwt";
 import { MoviesModule } from "./favorites/favorite-movies.module";
-import { ConfigModule } from '@nestjs/config';
-import { env_develop } from 'env_develop';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true, 
-    }),
-    MongooseModule.forRoot(env_develop.MONGO_URI),
+    MongooseModule.forRoot(process.env.MONGO_URI || "mongodb+srv://jako12287:johandev2022@cluster0.tku5o.mongodb.net/mydatabase?retryWrites=true&w=majority"),
     JwtModule.register({
-      secret: env_develop.JWT_SECRET!,
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: "60m" },
     }),
     UsersModule,
@@ -26,4 +21,6 @@ import { env_develop } from 'env_develop';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  
+}

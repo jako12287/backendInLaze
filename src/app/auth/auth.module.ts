@@ -6,14 +6,13 @@ import { AuthController } from "./auth.controller";
 import { UsersModule } from "../users/users.module";
 import { RevokedTokensModule } from "./revoked-tokens.module"; 
 import { JwtStrategy } from "./jwt.strategy";
-import { env_develop } from "env_develop";
 
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     UsersModule,
     JwtModule.register({
-      secret: env_develop.JWT_SECRET, 
+      secret: process.env.JWT_SECRET, 
       signOptions: { expiresIn: "1h" }, 
     }),
     RevokedTokensModule,  

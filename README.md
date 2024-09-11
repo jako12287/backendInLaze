@@ -23,18 +23,14 @@ A simple application built with NestJS. This project demonstrates how to set up 
 
 3. **Create a Configuration File**
 
-   Create a file named `env_develop.ts` in the root directory of the project with the following structure:
+   Create a file named `.env` in the root directory of the project with the following structure:
 
    ```typescript
-   export const env_develop: ENVPROPS = {
-     MONGO_URI: "your_database_connection_string",
-     JWT_SECRET: "your_jwt_secret",
-   };
+  
+     MONGO_URI=your_database_connection_string
+     JWT_SECRET=your_jwt_secret
+   
 
-   interface ENVPROPS {
-     MONGO_URI: string;
-     JWT_SECRET: string;
-   }
 
 ### API Documentation
 
