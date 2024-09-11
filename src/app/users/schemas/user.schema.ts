@@ -5,6 +5,7 @@ export const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   isDeleted: { type: Boolean, default: false },
+  favorites: [{ type: String }],
 });
 
 export interface User extends Document {
@@ -13,4 +14,5 @@ export interface User extends Document {
   email: string;
   password: string;
   isDeleted?: boolean;
+  favorites?: string[]
 }

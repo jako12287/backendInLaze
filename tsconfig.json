@@ -28,5 +28,9 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitOverride": true,
-  }
+  },
+  "include": [
+     "src/**/*.ts",
+    "src/types/custom-express.d.ts"
+  ]
 }

@@ -80,4 +80,31 @@ export class UsersService {
     user.isDeleted = true;
     return user.save();
   }
+
+  async toggleFavorite(userId: string, movieId: string): Promise<User> {
+    const user = await this.userModel.findById(userId);
+
+    if (!user) {
+      throw new NotFoundException("User not found");
+    }
+
+    const isFavorite = user.favorites?.includes(movieId);
+
+    if (isFavorite) {
+      user.favorites = user.favorites?.filter((id) => id !== movieId);
+    } else {
+      user.favorites?.push(movieId);
+    }
+
+    return user.save();
+  }
+
+  async getFavorites(userId: string): Promise<string[]> {
+    const user = await this.userModel.findById(userId).select("favorites");
+    if (!user) {
+      throw new NotFoundException("User not found");
+    }
+
+    return user.favorites || [];
+  }
 }

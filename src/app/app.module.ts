@@ -5,6 +5,7 @@ import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
 import { MongooseModule } from "@nestjs/mongoose";
 import { JwtModule } from "@nestjs/jwt";
+import { MoviesModule } from "./favorites/favorite-movies.module";
 
 @Module({
   imports: [
@@ -12,14 +13,14 @@ import { JwtModule } from "@nestjs/jwt";
       "mongodb+srv://jako12287:johandev2022@cluster0.tku5o.mongodb.net/mydatabase?retryWrites=true&w=majority",
     ),
     JwtModule.register({
-      secret: 'jako12287', 
-      signOptions: { expiresIn: '60m' }, 
+      secret: "jako12287",
+      signOptions: { expiresIn: "60m" },
     }),
     UsersModule,
-    AuthModule
+    AuthModule,
+    MoviesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
-
