@@ -10,7 +10,6 @@ import * as bcrypt from "bcryptjs";
 export class UsersService {
   constructor(@InjectModel("User") private readonly userModel: Model<User>) {}
 
-
   async findByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
   }
